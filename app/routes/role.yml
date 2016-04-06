@@ -1,0 +1,59 @@
+role.index:
+    pattern: /
+    options:
+        _controller: web\role::read
+        _title: Разводная страница
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+    
+role.pagination:
+    pattern: /page/{page}/
+    options:
+        _controller: web\role::read
+        _title: Постраничный вывод элементов
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+role.create:
+    pattern: /create/
+    options:
+        _controller: web\role::create
+        _title: Создание элемента
+        _action: create
+    methods: POST
+
+role.read:
+    pattern: /{_id}/
+    options:
+        _controller: web\role::read
+        _title: Просмотр элемента
+        _action: read
+    requirements:
+        _id: ([0-9A-Za-z]){24}
+    methods: GET
+
+role.update:
+    pattern: /update/
+    options:
+        _controller: web\role::update
+        _title: Редактирование элемента
+        _action: update
+    methods: POST
+
+role.delete:
+    pattern: /delete/
+    options:
+        _controller: web\role::delete
+        _title: Удаление элемента
+        _action: delete
+    methods: POST

@@ -1,0 +1,38 @@
+name: direction
+titles:
+    list: Направления
+    item: Направление
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotNull:
+                message: Укажите название элемента
+            NotBlank:
+                message: Название элемента не может быть пустым
+    image:
+        title: Изображение
+        type: image
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Выберите изображение
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента

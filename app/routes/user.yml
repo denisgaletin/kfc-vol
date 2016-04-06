@@ -1,0 +1,108 @@
+user.index:
+    pattern: /
+    options:
+        _controller: web\user::read
+        _title: Разводная страница
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+    
+user.pagination:
+    pattern: /page/{page}/
+    options:
+        _controller: web\user::read
+        _title: Постраничный вывод элементов
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+user.create:
+    pattern: /create/
+    options:
+        _controller: web\user::create
+        _title: Создание элемента
+        _action: create
+    methods: POST
+
+user.read:
+    pattern: /{_id}/
+    options:
+        _controller: web\user::read
+        _title: Просмотр элемента
+        _action: read
+    requirements:
+        _id: ([0-9A-Za-z]){24}
+    methods: GET
+
+user.update:
+    pattern: /update/
+    options:
+        _controller: web\user::update
+        _title: Редактирование элемента
+        _action: update
+    methods: POST
+
+user.delete:
+    pattern: /delete/
+    options:
+        _controller: web\user::delete
+        _title: Удаление элемента
+        _action: delete
+    methods: POST
+
+user.authByToken:
+    pattern: /auth/token/
+    options:
+        _controller: web\user::authByToken
+        _title: Авторизация по токену
+        _action: read
+    methods: POST
+
+user.authByPass:
+    pattern: /auth/pass/
+    options:
+        _controller: web\user::authByPass
+        _title: Авторизация по паролю
+        _action: read
+    methods: POST
+
+user.restore:
+    pattern: /restore/
+    options:
+        _controller: web\user::restore
+        _title: Восстановление пароля
+        _action: read
+    methods: POST
+
+user.changePass:
+    pattern: /changePass/
+    options:
+        _controller: web\user::changePass
+        _title: Изменение пароля
+        _action: read
+    methods: GET
+
+user.logout:
+    pattern: /logout/
+    options:
+        _controller: web\user::logout
+        _title: Выход из сессии
+        _action: read
+    methods: GET
+
+user.export:
+    pattern: /export/
+    options:
+        _controller: web\user::export
+        _title: Экспорт элементов
+        _action: read
+        _layout: null
+    methods: GET

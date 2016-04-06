@@ -1,0 +1,34 @@
+name: address
+titles:
+    list: Адреса учреждений
+    item: Название и адрес
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название
+        type: text
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    address:
+        title: Адрес
+        type: text
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента

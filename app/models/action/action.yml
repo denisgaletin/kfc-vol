@@ -1,0 +1,57 @@
+name: action
+titles:
+    list: Акции
+    item: Акция
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название элемента
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    image:
+        title: Изображение
+        type: image
+        sort: true
+        validation:
+            Image:
+                maxWidth: 396
+                maxHeight: 228
+                minWidth: 290
+                minHeight: 167
+                maxWidthMessage: Максимальная ширина изображения {{value}}px
+                maxHeightMessage: Максимальная высота изображения {{value}}px
+                minWidthMessage: Минимальная ширина изображения {{value}}px
+                minHeightMessage: Минимальная высота изображения {{value}}px
+    date:
+        title: Дата публикации
+        type: date
+        index: -1
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента
+    townmap:
+        title: Город
+        type: entity
+        entity:
+            model: townmap
+            filter: {enabled: true}
+            field: title
+    content:
+        title: Текст новости
+        type: html
+        search: true

@@ -1,0 +1,56 @@
+name: user
+titles:
+    list: Пользователи
+    item: Пользователь
+backend:
+    position: 1
+    icon: fa-user
+fields:
+    title:
+        title: Название элемента
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    email:
+        title: Email
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Email не может быть пустым
+            Email:
+                message: Некорректный Email
+    password:
+        title: Пароль
+        type: password
+        require: true
+        validation:
+            NotBlank:
+                message: Пароль не может быть пустым
+            Length:
+                min: 6
+                minMessage: Минимальная длина пароля 6 символов
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента
+    role:
+        title: Роль
+        type: entity
+        entity:
+            model: role
+            filter: {enabled: true}
+            field: title
+        multiple: true

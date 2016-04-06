@@ -1,0 +1,67 @@
+action.index:
+    pattern: /
+    options:
+        _controller: web\action::read
+        _title: Разводная страница
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+action.pagination:
+    pattern: /page/{page}/
+    options:
+        _controller: web\action::read
+        _title: Постраничный вывод элементов
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+action.create:
+    pattern: /create/
+    options:
+        _controller: web\action::create
+        _title: Создание элемента
+        _action: create
+    methods: POST
+
+action.read:
+    pattern: /{_id}/
+    options:
+        _controller: web\action::read
+        _title: Просмотр элемента
+        _action: read
+    requirements:
+        _id: ([0-9A-Za-z]){24}
+    methods: GET
+
+action.update:
+    pattern: /update/
+    options:
+        _controller: web\action::update
+        _title: Редактирование элемента
+        _action: update
+    methods: POST
+
+action.delete:
+    pattern: /delete/
+    options:
+        _controller: web\action::delete
+        _title: Удаление элемента
+        _action: delete
+    methods: POST
+
+action.export:
+    pattern: /export/
+    options:
+        _controller: web\action::export
+        _title: Экспорт элементов
+        _action: read
+    methods: GET

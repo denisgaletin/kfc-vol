@@ -1,0 +1,78 @@
+name: program
+titles:
+    list: Программы
+    item: Программа
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента
+    question:
+        title: Заголовок вопроса
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Заголовок вопроса не может быть пустым
+    answer:
+        title: Заголовок ответа
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Заголовок ответа не может быть пустым
+    preview:
+        title: Заголовок анонса
+        type: text
+        require: true
+    banner:
+        title: Баннер на главной
+        type: image
+        require: true
+    icon:
+        title: Иконка
+        type: image
+        require: true
+    description:
+        title: Описание программы
+        type: html
+        require: true
+        search: true
+    gallery:
+        title: Галлерея изображений
+        type: image
+        require: false
+        multiple: true
+    sort:
+        title: Сортировка
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Укажите порядок для сортировки
+    name:
+        title: Внутреннее имя
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Укажите внутреннее имя

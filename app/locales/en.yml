@@ -1,0 +1,26 @@
+# HTTP Status
+401: You are not logged in
+403: Forbidden
+404: Not Found
+500: Internal Server Error
+
+# Exceptions
+pcl.500: Error while requesting to PCL
+static.500: Error while requesting to static server
+transaction.404: Transaction not found
+
+# Notifications
+user.login: Login complete
+user.restore: Request for restore password submitted.<br><br>In the near future you will be contacted.
+user.changePassword: Request for change password submitted. In the near future you will be contacted.
+user.logout: Logout complete
+user.wrong.token: Wrong token
+user.wrong.login: Wrong login or password
+user.wrong.alreadyLogin: Already logged in
+user.wrong.email: Email not given
+user.wrong.emailExists: User with this Email already signed up
+captcha.wrong: Wrong captcha code
+join.success: Request for joining the program submitted. In the near future you will be contacted.
+refund.success: Transaction refund completed
+writeoff.success: Transaction writeoff completed
+writeoff.wrong.card: Transaction cannot completed with this card

@@ -1,0 +1,44 @@
+name: townmap
+titles:
+    list: Города на карте
+    item: Город
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Город
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    title_pr:
+        title: Город в предложном падеже
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название в предложном падеже не может быть пустым
+    address:
+        title: Учреждение
+        type: entity
+        entity:
+            model: address
+            filter: {enabled: true}
+            field: title
+        multiple: true
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента

@@ -1,0 +1,67 @@
+project.index:
+    pattern: /
+    options:
+        _controller: web\project::read
+        _title: Разводная страница
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+    
+project.pagination:
+    pattern: /page/{page}/
+    options:
+        _controller: web\project::read
+        _title: Постраничный вывод элементов
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+project.create:
+    pattern: /create/
+    options:
+        _controller: web\project::create
+        _title: Создание элемента
+        _action: create
+    methods: POST
+
+project.read:
+    pattern: /{_id}/
+    options:
+        _controller: web\project::read
+        _title: Просмотр элемента
+        _action: read
+    requirements:
+        _id: ([0-9A-Za-z]){24}
+    methods: GET
+
+project.update:
+    pattern: /update/
+    options:
+        _controller: web\project::update
+        _title: Редактирование элемента
+        _action: update
+    methods: POST
+
+project.delete:
+    pattern: /delete/
+    options:
+        _controller: web\project::delete
+        _title: Удаление элемента
+        _action: delete
+    methods: POST
+
+project.export:
+    pattern: /export/
+    options:
+        _controller: web\project::export
+        _title: Экспорт элементов
+        _action: read
+    methods: GET

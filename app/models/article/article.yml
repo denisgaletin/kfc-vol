@@ -1,0 +1,78 @@
+name: article
+titles:
+    list: Новости
+    item: Новость
+backend:
+    position: 3
+    icon: fa-angle-right
+fields:
+    title:
+        title: Заголовок
+        type: string
+        require: true
+        sort: true
+        search: true
+        validation:
+            NotBlank:
+                message: Заголовок не может быть пустым
+    thumbnail:
+        title: Миниатюра (размер 140x140 px)
+        type: image
+        sort: true
+        validation:
+            Image:
+                maxWidth: 140
+                maxWidthMessage: Максимальная ширина изображения 140px
+    image:
+        title: Изображение
+        type: image
+        validation:
+            Image:
+                maxWidth: 610
+                maxWidthMessage: Максимальная ширина изображения 610px
+    date:
+        title: Дата публикации
+        type: date
+        index: -1
+    enabled:
+        title: Доступность
+        type: boolean
+        require: true
+        sort: true
+        multiple: false
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность
+            NotNull:
+                message: Не указана доступность
+    town:
+        title: Город
+        type: entity
+        entity:
+            model: town
+            filter: {enabled: true}
+            field: title
+        multiple: false
+    program:
+        title: Программа
+        type: entity
+        entity:
+            model: program
+            filter: {enabled: true}
+            field: title
+        multiple: true
+    preview:
+        title: Анонс новости
+        type: text
+    content:
+        title: Текст новости
+        type: html
+        search: true
+    sort_program:
+        title: Раздел
+        type: string
+        search: true
+        sort: true
+        disabled: true

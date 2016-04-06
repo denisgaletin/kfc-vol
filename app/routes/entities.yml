@@ -1,0 +1,17 @@
+atom.entity.index:
+    pattern: /
+    options:
+        _controller: web\entities::index
+        _title: Список сущностей
+        _action: read
+    methods: GET
+        
+atom.entity.read:
+    pattern: /{entity}/
+    options:
+        _controller: web\entities::read
+        _title: Просмотр свойств сущности
+        _action: read
+    requirements:
+        entity: .+
+    methods: GET

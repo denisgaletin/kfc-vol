@@ -1,0 +1,64 @@
+name: page
+titles:
+    list: Статичные страницы
+    item: Страница
+backend:
+    position: 4
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название
+        type: string
+        require: true
+        list:
+          sort: true
+        validation:
+            NotBlank:
+                message: Название не может быть пустым
+    enabled:
+        title: Доступность
+        type: boolean
+        require: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность
+            NotNull:
+                message: Не указана доступность
+    url:
+        title: URL
+        type: string
+        require: true
+        validation:
+            Regex:
+                pattern: ~[^0-9A-Za-z\\/-_]~
+                match: false
+                message: Неверный URL
+            NotBlank:
+                message: URL не может быть пустым
+            Custom:
+                expression: this.isUnique('url')
+                message: Страница с указанным URL уже существует
+    pid:
+        title: Родительская страница
+        type: entity
+        entity:
+            model: page
+            filter: {level: 0, enabled: true}
+            field: title
+        require: true
+        validation:
+            Regex:
+                pattern: ~[^0-9A-Za-z]~
+                match: false
+                message: Неверный родительский ID
+            Custom:
+                expression: !value or this.mongoid(value) == value
+    level:
+        title: Уровень вложенности
+        type: integer
+        hide: true
+    content:
+        title: Контент
+        type: html

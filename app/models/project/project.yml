@@ -1,0 +1,108 @@
+name: project
+titles:
+    list: Проекты
+    item: Проект
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название проекта не может быть пустым
+    direction:
+        title: Направление
+        type: entity
+        require: true
+        entity:
+            model: direction
+            filter: {enabled: true}
+            field: title
+        validation:
+            NotNull:
+                message: Выберите направление
+    town:
+        title: Город
+        type: entity
+        require: true
+        entity:
+            model: town
+            filter: {enabled: true}
+            field: title
+        validation:
+            NotNull:
+                message: Выберите город
+    datestart:
+        title: Дата начала проведения
+        type: date
+        require: true
+        validation:
+            NotBlank:
+                message: Укажите дату
+    dateend:
+        title: Дата конца проведения
+        type: date
+        require: true
+        validation:
+            NotBlank:
+                message: Укажите дату конца проведения
+            NotNull:
+                message: Не указана дата конца проведения
+    time:
+        title: Время проведения
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Укажите время проведения
+    preview:
+        title: Превью
+        type: image
+        require: true
+        validation:
+            NotBlank:
+                message: Выберите превью
+    image:
+        title: Изображение
+        type: image
+        require: false
+    shortdesc:
+        title: Анонс
+        type: text
+        require: false
+    contact:
+        title: Контактное лицо
+        type: string
+        require: false
+    email:
+        title: Email
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: Email не может быть пустым
+            Email:
+                message: Некорректный email
+    longdesc:
+        title: Подробное описание
+        type: html
+        require: true
+        validation:
+            NotBlank:
+                message: Подробное описание не может быть пустым
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента

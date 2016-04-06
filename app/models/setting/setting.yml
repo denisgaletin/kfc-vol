@@ -1,0 +1,47 @@
+name: setting
+titles:
+    list: Настройки
+    item: Параметр
+backend:
+    position: 6
+    icon: fa-cog
+fields:
+    title:
+        title: Название элемента
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название элемента не может быть пустым
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента
+    key:
+        title: Внутреннее наименование
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Не указано внутреннее наименование
+            Regex:
+                pattern: "/^[a-z]+$/i"
+                htmlPattern: "^[a-z]+$"
+                message: Внутреннее наименование должно содержать только буквы латинского алфавита в нижнем регистре
+            Custom:
+                expression: this.isUnique('key')
+                message: Указанное внутреннее наименование уже существует
+    value:
+        title: Значение
+        type: string
+        sort: true

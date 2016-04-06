@@ -1,0 +1,43 @@
+name: town
+titles:
+    list: Города
+    item: Город
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Название в именительном падеже
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название в именительном падеже не может быть пустым
+    title_pr:
+        title: Название в предложном падеже
+        type: string
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Название в предложном падеже не может быть пустым
+    kladr:
+        title: КЛАДР
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: КЛАДР не может быть пустым
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotNull:
+                message: Не указана доступность элемента

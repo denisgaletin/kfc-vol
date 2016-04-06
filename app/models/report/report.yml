@@ -1,0 +1,171 @@
+name: report
+titles:
+    list: Отчеты
+    item: Отчет
+backend:
+    position: 100
+    icon: fa-angle-right
+fields:
+    title:
+        title: Заголовок
+        type: string
+    fio:
+        title: ФИО
+        type: string
+        require: true
+        validation:
+            NotBlank:
+                message: ФИО не может быть пустым
+    shortdesc:
+        title: Краткое описание
+        type: text
+        require: true
+        sort: true
+        validation:
+            NotBlank:
+                message: Поле не может быть пустым
+    image:
+        title: Изображения
+        type: image
+        multiple: true
+    enabled:
+        title: Доступность элемента
+        type: boolean
+        require: true
+        sort: true
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указана доступность элемента
+            NotBLank:
+                message: Не указана доступность элемента
+    town:
+        title: Город
+        type: entity
+        required: false
+        entity:
+            model: town
+            filter: {enabled: true}
+            field: title
+        validation:
+            NotNull:
+                message: Выберите город
+    company:
+        title: Компания
+        type: string
+        required: false
+        validation:
+            NotNull:
+                message: Название компании не может быть пустым
+    projectname:
+        title: Название проекта
+        type: string
+        required: false
+        validation:
+            NotNull:
+                message: Название проекта не можете быть пустым
+    longdesc:
+        title: Подробное описание
+        type: text
+        required: false
+        validation:
+            NotNull:
+                message: Подробное описание не может быть пустым
+    date:
+        title: Дата проведения
+        type: text
+        required: false
+        validation:
+            NotNull:
+                message: Дата проведеняи не может быть пустой
+    phone:
+        title: Телефон
+        type: string
+        required: false
+        validation:
+            NotNull:
+                message: Телефон не может быть пустым
+    email:
+        title: Email
+        type: string
+        required: false
+        validation:
+            Email:
+                message: Некорректный email
+            NotNull:
+                message: Email не может быть пустым
+    member:
+        title: Участники
+        type: text
+        required: false
+        validaton:
+            NotBlank:
+                message: Список участников не должен быть пустым
+    fond:
+        title: Содействие фонда
+        type: boolean
+        required: false
+        validation:
+            Choice:
+                choices: [true, false]
+                strict: true
+                message: Не верно указано содействие фонда
+            NotNull:
+                message: Не указано содействие фонда
+    fondname:
+        title: Название фонда
+        type: string
+        requred: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','fondname')
+                message: Название фонда не должно быть пустым
+    fondaddress:
+        title: Адрес фонда
+        type: text
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','fondaddress')
+                message: Адрес фонда не должен быть пустым
+    inn:
+        title: ИНН
+        type: string
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','inn')
+                message: ИНН не должен быть пустым
+    contact:
+        title: Контактное лицо фонда
+        type: string
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','contact')
+                message: Контактное лицо фонда не должно быть пустым
+    fondphone:
+        title: Телефон фонда
+        type: string
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','fondphone')
+                message: Телефон фонда не должен быть пустым
+    fondemail:
+        title: Email фонда
+        type: string
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','fondemail','Email')
+                message: Пустой или некорректный Email фонда
+    url:
+        title: Web-site
+        type: string
+        required: false
+        validation:
+            Custom:
+                expression: this.isValueFormIsTrue('fond','url')
+                message: Web-site фонда не должен быть пустым

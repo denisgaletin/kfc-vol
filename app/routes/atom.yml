@@ -1,0 +1,21 @@
+atom.entities:
+    prefix: /entities
+    resource: entities.yml
+
+atom.filemanager.proxy:
+    pattern: /filemanager/{query}
+    options:
+        _layout: null
+        _controller: web\filemanager::proxy
+        _title: Проксирование запросов файлменеджера
+    methods: [GET,POST]
+    requirements:
+        query: .+
+
+atom.frontend:
+    pattern: /
+    options:
+        _controller: web\main::null
+        _title: Административная панель
+        _action: read
+    methods: GET

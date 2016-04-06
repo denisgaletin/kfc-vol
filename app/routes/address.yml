@@ -1,0 +1,59 @@
+address.index:
+    pattern: /
+    options:
+        _controller: web\address::read
+        _title: Разводная страница
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+    
+address.pagination:
+    pattern: /page/{page}/
+    options:
+        _controller: web\address::read
+        _title: Постраничный вывод элементов
+        _action: read
+    defaults:
+        condition: {enabled: true}
+        sort: {_id: -1}
+        limit: 10
+        skip: 0
+    methods: GET
+
+address.create:
+    pattern: /create/
+    options:
+        _controller: web\address::create
+        _title: Создание элемента
+        _action: create
+    methods: POST
+
+address.read:
+    pattern: /{_id}/
+    options:
+        _controller: web\address::read
+        _title: Просмотр элемента
+        _action: read
+    requirements:
+        _id: ([0-9A-Za-z]){24}
+    methods: GET
+
+address.update:
+    pattern: /update/
+    options:
+        _controller: web\address::update
+        _title: Редактирование элемента
+        _action: update
+    methods: POST
+
+address.delete:
+    pattern: /delete/
+    options:
+        _controller: web\address::delete
+        _title: Удаление элемента
+        _action: delete
+    methods: POST

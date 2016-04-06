@@ -1,0 +1,97 @@
+index:
+    pattern: /
+    options:
+        _controller: web\main::null
+        _title: Главная страница
+        _action: read
+    methods: GET
+
+# Role
+role:
+    prefix: /role
+    resource: role.yml
+###
+
+# User
+user:
+    prefix: /user
+    resource: user.yml
+###
+
+# Page
+page:
+    prefix: /page
+    resource: page.yml
+###
+
+# Article
+article:
+    prefix: /article
+    resource: article.yml
+###
+
+# Setting
+setting:
+    prefix: /setting
+    resource: setting.yml
+###
+
+# Action
+action:
+    prefix: /action
+    resource: action.yml
+###
+
+# Town
+town:
+    prefix: /town
+    resource: town.yml
+###
+
+# Program
+program:
+    prefix: /program
+    resource: program.yml
+###
+
+# Report
+report:
+    prefix: /report
+    resource: report.yml
+###
+
+# Direction
+direction:
+    prefix: /direction
+    resource: direction.yml
+###
+
+# Project
+project:
+    prefix: /project
+    resource: project.yml
+###
+
+# Block
+block:
+    prefix: /block
+    resource: block.yml
+###
+
+# Volunteer
+volunteer:
+    prefix: /volunteer
+    resource: volunteer.yml
+###
+
+# Townmap
+townmap:
+    prefix: /townmap
+    resource: townmap.yml
+###
+
+# Address
+address:
+    prefix: /address
+    resource: address.yml
+###
